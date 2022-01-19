@@ -1,0 +1,17 @@
+.side_nav{
+    display: inline-flex;
+    height: 100vh;
+    background-color: white;
+    padding: .2rem .8rem;
+    flex-direction: column;
+    border-right: 1.5px solid #DFDFDF;
+}
+
+.link_icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    margin: .5rem 0;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}

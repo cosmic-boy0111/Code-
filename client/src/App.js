@@ -1,10 +1,21 @@
-import './App.css';
+import React from 'react'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from 'react-router-dom'
+import Blog from './components/Body/Blog'
 
-function App() {
+const App = () => {
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Blog/>} />
+        </Routes>
+      </BrowserRouter>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
