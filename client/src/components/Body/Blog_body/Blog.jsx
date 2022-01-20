@@ -1,14 +1,43 @@
-import React from 'react'
-import HeadNav from '../Navbar/HeadNav'
-import SideNav from '../Navbar/SideNav'
-import '../../style/Body/Blog.css'
-import search from '../../images/icon/search.png'
-import BlogContainer from './Blog_body/BlogContainer'
+import React,{useContext,useEffect} from 'react'
+import HeadNav from '../../Navbar/HeadNav'
+import SideNav from '../../Navbar/SideNav'
+import '../../../style/Body/Blog.css'
+import search from '../../../images/icon/search.png'
+import BlogContainer from './BlogContainer'
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import TemporaryDrawer from './CreateBlog'
+import { AppContext } from '../../../App'
 
+import { useNavigate } from 'react-router-dom'
 
 const Blog = () => {
+
+    let navigate = useNavigate();
+
+    const {toggleDrawer} = useContext(AppContext)
+
+    
+  const getData = async() =>{
+    try {
+      const res2 = await fetch('/about',{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/json"
+          }
+      })
+
+          const Data = await res2.json();
+      } catch (error) {
+          console.log('data not found');
+          navigate('/login')
+      }
+  }
+
+    useEffect(() => {
+        getData();
+    }, []);
+
     return (
         <div className='App'>
             <div className='Body'>
@@ -31,10 +60,11 @@ const Blog = () => {
                             <BlogContainer />
                         </section>
                         <div className='create_post'>
-                            <Fab color="primary" aria-label="add">
+                            <Fab color="primary" aria-label="add" onClick={toggleDrawer('right', true)}>
                                 <AddIcon />
                             </Fab>
                         </div>
+                        <TemporaryDrawer />
                     </div>
                 </div>
 

@@ -37,7 +37,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgb(123, 124, 124);
+    background-color: rgba(197, 197, 197, 0.76);
     padding: 1rem;
 }
 
@@ -61,4 +61,74 @@
     position: absolute;
     bottom: 1.5rem;
     right: 1.5rem;
+}
+
+.css-1160xiw-MuiPaper-root-MuiDrawer-paper{
+    width: 75%;
+    border-radius: 10px 0 0 10px;
+    background-color: #f0f2f5 !important;
+    /* padding: 1rem; */
+    
+}
+
+.heading{
+    margin: 0;
+}
+
+.blog_header2{
+    position: sticky;
+    top: 0;
+    background-color: #f0f2f5;
+    padding: 1rem;
+}
+
+.create_blog{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.create_blog_body{
+
+}
+
+
+.blog_footer_action{
+    /* position: absolute;
+    bottom: 0; */
+    /* position: fixed; */
+    position: sticky;
+    padding: 1rem;
+    bottom: 0;
+    background-color: #f0f2f5;
+    width: fit-content;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back{
+    display: flex !important;
+    align-items: center !important;
+}
+
+.blog_form{
+    padding: 0 1rem;
+}
+
+@media screen and (max-width : 800px) {
+    .blog_search{
+        width: max-content;
+    }
+
+    .blog_container{
+        width: 100%;
+    }
+
+    .css-1160xiw-MuiPaper-root-MuiDrawer-paper{
+        width: 100%;
+        border-radius: 0px;
+    }
 }

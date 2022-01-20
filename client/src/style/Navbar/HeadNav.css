@@ -15,7 +15,7 @@
     width: 40%;
     display: flex;
     align-items: center;
-    padding: 0 .5rem;
+    padding: 0 1rem;
     
 }
 
@@ -28,5 +28,11 @@
     border: none;
     outline: none;
     width: 100%;
-    padding: .7rem 1rem;
+    padding: .5rem 1rem;
+}
+
+@media screen and (max-width : 850px) {
+    .search{
+        width: 90%;
+    }
 }

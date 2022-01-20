@@ -13,14 +13,14 @@ import appDev from '../../images/icon/developer.png'
 const SideNav = () => {
     return (
         <div className='side_nav'>
-            <SideLink icon={user} link={'#'} />
-            <SideLink icon={blog} link={'#'} />
-            <SideLink icon={users} link={'#'} />
-            <SideLink icon={code} link={'#'} />
-            <SideLink icon={webDev} link={'#'} />
-            <SideLink icon={appDev} link={'#'} />
-            <SideLink icon={machine} link={'#'} />
-            <SideLink icon={more} link={'#'} />
+            <SideLink icon={user} link={'/profile'} />
+            <SideLink icon={blog} link={'/'} />
+            <SideLink icon={users} link={'/'} />
+            <SideLink icon={code} link={'/programming'} />
+            <SideLink icon={webDev} link={'/'} />
+            <SideLink icon={appDev} link={'/'} />
+            <SideLink icon={machine} link={'/'} />
+            <SideLink icon={more} link={'/'} />
         </div>
     )
 }

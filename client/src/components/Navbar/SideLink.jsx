@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const SideLink = ({icon,link}) => {
     return (
         <div>
-            <NavLink to={'/'}> <img src={icon} alt="" className='link_icon'/> </NavLink>
+            <NavLink to={link}> <img src={icon} alt="" className='link_icon'/> </NavLink>
         </div>
     )
 }
