@@ -1,0 +1,36 @@
+.code_img{
+    width: 100%;
+    /* height: 250px; */
+}
+
+.code_img .header_img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.pro_link{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    justify-content: space-between;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.pro_link img{
+    width: 50px;
+    margin-bottom: .5rem;
+}
+
+.tech_header{
+    display: flex;
+    margin: .7rem 0;
+    align-items: center;
+}
+
+.tech_header .logo{
+    width: 50px;
+    margin-right: 1rem;
+}

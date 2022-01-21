@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './components/Body/Profile/Profile';
 import Programming from './components/Body/Programming/Programming';
+import Body from './components/Body';
 
 
 export const AppContext = createContext();
@@ -21,6 +22,9 @@ const App = () => {
     right: false,
   });
 
+  const [rootUser, setRootUser] = useState({});
+
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -28,6 +32,7 @@ const App = () => {
 
     setToggleState({ ...toggleState, [anchor]: open });
   };
+
 
   
 
@@ -38,13 +43,13 @@ const App = () => {
         <AppContext.Provider value={{
           toggleState,
           toggleDrawer,
+          rootUser, 
+          setRootUser
         }}>
 
         <Routes>
-          <Route exact path='/' element={<Blog />} />
-          <Route exact path='/login' element={<Initial />} />
-          <Route exact path='/profile' element={<Profile />} />
-          <Route exact path='/programming' element={<Programming />} />
+          <Route  path='*' element={<Body />} />
+          <Route path='/login' element={<Initial />} />
         </Routes>
         </AppContext.Provider>
         <ToastContainer />
