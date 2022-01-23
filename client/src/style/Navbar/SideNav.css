@@ -4,7 +4,7 @@
     background-color: white;
     padding: .2rem .8rem;
     flex-direction: column;
-    border-right: 1.5px solid #DFDFDF;
+    /* border-right: 1.5px solid #DFDFDF; */
 }
 .side_nav2{
     display: inline-flex;

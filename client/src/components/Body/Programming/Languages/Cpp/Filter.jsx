@@ -6,12 +6,12 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import filter from '../../../../../images/icon/filter.png'
 import FilterTag from './FilterTag';
+import Tag from './Tags'
 import Button from '@mui/material/Button';
 
 
 export default function SimpleAccordion() {
 
-  const Tag = ['Array','String','Linked List','Stack','Queue','Heap','Binary Search','Tree','Graph','Sliding Window','Greedy','Dynamic','Bit Manipulation','Number Theory']
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {

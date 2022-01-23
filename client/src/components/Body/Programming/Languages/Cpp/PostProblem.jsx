@@ -5,23 +5,12 @@ import Button from '@mui/material/Button';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import TestCases from './TestCases'
 import Tag from './Tag'
+import tags from './Tags'
 export default function TemporaryDrawer() {
   
   const {toggleState3, toggleDrawer3} = useContext(AppContext)
 
-  
-  const tags = [
-    'Oliver Hansen',
-    'Van Henry',
-    'April Tucker',
-    'Ralph Hubbard',
-    'Omar Alexander',
-    'Carlos Abbott',
-    'Miriam Wagner',
-    'Bradley Wilkerson',
-    'Virginia Andrews',
-    'Kelly Snyder',
-  ];
+
 
   const [tag, setTag] = useState([]);
 
@@ -58,9 +47,10 @@ export default function TemporaryDrawer() {
                         <textarea class="form-control" placeholder="Add description ...." id="description" rows={6}></textarea>
                       </div>
                       <div className='selector'>
-                        <div class="mb-3 selector_field">
+                        <div class="mb-2 selector_field">
                           <label for="description" class="form-label">Tags</label>
                           <Tag tags={tags} value={tag} setValue={setTag} multi={true}/>
+                          <div id="emailHelp" class="form-text">First select main Tag, and then related Tags</div>
                         </div>
                         <div class="mb-3 selector_field">
                           <label for="description" class="form-label">Difficulty</label>

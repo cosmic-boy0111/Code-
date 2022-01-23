@@ -11,8 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from './components/Body/Profile/Profile';
 import Programming from './components/Body/Programming/Programming';
 import Body from './components/Body';
-
-
+import load from './videos/share.mp4'
+import './App.css'
 export const AppContext = createContext();
 
 const App = () => {
@@ -24,6 +24,13 @@ const App = () => {
   });
 
 
+  const [loader, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false)      
+    }, 2000);
+  }, []);
+  
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -66,6 +73,20 @@ const App = () => {
 
   return (
     <>
+      <div style={{
+        display:loader ? 'flex' : 'none'
+      }}
+      className='load_page'
+      >
+      <video playsInline={true} preload='auto' autoPlay={true} loop={loader} muted={true} className='video' >
+                <source src={load} type="video/mp4" style={{
+                    borderRadius:'5px'
+                }}/>
+            </video>
+      </div>
+      <div  style={{
+        display: !loader ? 'block' : 'none'
+      }}>
       <BrowserRouter>
         <AppContext.Provider value={{
           toggleState,
@@ -85,6 +106,7 @@ const App = () => {
         </AppContext.Provider>
         <ToastContainer />
       </BrowserRouter>
+      </div>
     </>
   )
 }
