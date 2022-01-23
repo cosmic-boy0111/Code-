@@ -63,11 +63,11 @@ const Login = ({setPage}) => {
           <form onSubmit={handleSubmit}>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control bg-grey" id="email" name='email' value={userData.email} onChange={inputHandler} required/>
+              <input type="email" class="form-control" id="email" name='email' value={userData.email} onChange={inputHandler} required/>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control bg-grey" id="password" name='password' value={userData.password} onChange={inputHandler} required/>
+              <input type="password" class="form-control" id="password" name='password' value={userData.password} onChange={inputHandler} required/>
             </div>
             <Button type='submit' variant="contained" style={{width:'100%'}}>LOGIN</Button>
             <Button color='primary' style={{width:'100%',marginTop:'1rem'}} onClick={()=>setPage('forgot')}>Forgot Password ?</Button>

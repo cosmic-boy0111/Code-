@@ -27,6 +27,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const DashBoard = () => {
 
     
+  useEffect(() => {
+    var myDiv = document.getElementsByClassName('Actual_body')[0];
+    myDiv.scrollTop = 0;
+  }, []);
     const { rootUser, setRootUser } = useContext(AppContext)
 
     const card_data = [

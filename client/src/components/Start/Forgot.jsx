@@ -170,12 +170,12 @@ const Forgot = ({setPage}) => {
                    
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control bg-grey" id="email"  name='email' value = {email} onChange={(e)=>setEmail(e.target.value)} required/>
+                        <input type="email" class="form-control" id="email"  name='email' value = {email} onChange={(e)=>setEmail(e.target.value)} required/>
                     </div>
                     
                     <div class="mb-3">
                         <label for="key" class="form-label">Security Key</label>
-                        <input type="text" class="form-control bg-grey" id="key"  name='key' value = {key} onChange={(e)=>setKey(e.target.value)} required/>
+                        <input type="text" class="form-control" id="key"  name='key' value = {key} onChange={(e)=>setKey(e.target.value)} required/>
                     </div>
                     <div style={{
                         display:err?'block':'none'

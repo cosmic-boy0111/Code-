@@ -1,12 +1,12 @@
 .head_nav{
     display: flex;
     justify-content: space-between;
-    padding: .5rem 1.5rem;
+    padding: .5rem 0.5rem;
     /* border: 1px solid red; */
     background-color: white;
+    align-items: center;
     width: 100%;
     border-bottom: 1.5px solid #DFDFDF;
-
 }
 
 .search{
@@ -31,8 +31,9 @@
     padding: .5rem 1rem;
 }
 
-@media screen and (max-width : 850px) {
+@media screen and (max-width : 900px) {
     .search{
         width: 90%;
     }
+
 }

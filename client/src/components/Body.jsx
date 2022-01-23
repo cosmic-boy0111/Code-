@@ -13,10 +13,17 @@ import Programming from './Body/Programming/Programming';
 import DashBoard from './DashBoard/DashBoard';
 import { AppContext } from '../App';
 import Cpp from './Body/Programming/Languages/Cpp/Cpp';
+import TemporaryDrawer from './Navbar/Drawer';
 
 const Body = () => {
 
   const {rootUser, setRootUser} = useContext(AppContext);
+
+  
+  useEffect(() => {
+    var myDiv = document.getElementsByClassName('Actual_body')[0];
+    myDiv.scrollTop = 0;
+  }, []);
 
     let navigate = useNavigate();
   const getData = async() =>{
@@ -45,6 +52,7 @@ const Body = () => {
           <div className='Body'>
               <div>
                   <SideNav />
+                  <TemporaryDrawer />
               </div>
               <div className='Body_container'>
                   <HeadNav />

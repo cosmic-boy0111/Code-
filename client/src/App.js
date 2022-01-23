@@ -17,12 +17,12 @@ export const AppContext = createContext();
 
 const App = () => {
 
+  const [rootUser, setRootUser] = useState({});
 
   const [toggleState, setToggleState] = useState({
     right: false,
   });
 
-  const [rootUser, setRootUser] = useState({});
 
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -31,6 +31,33 @@ const App = () => {
     }
 
     setToggleState({ ...toggleState, [anchor]: open });
+  };
+
+
+  const [state2, setState2] = React.useState({
+    left: false,
+  });
+
+  const toggleDrawer2 = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState2({ ...state2, [anchor]: open });
+  };
+
+  const [toggleState3, setToggleState3] = useState({
+    right: false,
+  });
+
+
+
+  const toggleDrawer3 = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setToggleState3({ ...toggleState3, [anchor]: open });
   };
 
 
@@ -44,7 +71,11 @@ const App = () => {
           toggleState,
           toggleDrawer,
           rootUser, 
-          setRootUser
+          setRootUser,
+          toggleDrawer2,
+          state2,
+          toggleDrawer3,
+          toggleState3
         }}>
 
         <Routes>

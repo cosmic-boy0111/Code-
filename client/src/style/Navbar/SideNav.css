@@ -6,6 +6,13 @@
     flex-direction: column;
     border-right: 1.5px solid #DFDFDF;
 }
+.side_nav2{
+    display: inline-flex;
+    height: 100vh;
+    background-color: white;
+    padding: .2rem .8rem;
+    flex-direction: column;
+}
 
 .link_icon{
     width: 30px;
@@ -14,4 +21,29 @@
 
     margin: .5rem 0;
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.Open_side_drawer{
+    display: none !important;
+}
+
+.link2{
+    text-decoration: none;
+    color: black;
+    padding-right: 1rem;
+}
+
+.link2 img{
+    margin-right: 1rem;
+}
+
+
+@media screen and (max-width : 900px){
+    .Open_side_drawer{
+        display: block !important;
+    }
+
+    .side_nav{
+        display: none !important;
+    }
 }

@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import '../../../style/Body/Blog.css'
 import search from '../../../images/icon/search.png'
 import BlogContainer from './BlogContainer'
@@ -12,7 +12,11 @@ const Blog = () => {
 
 
     const {toggleDrawer} = useContext(AppContext)
-
+    
+    useEffect(() => {
+        var myDiv = document.getElementsByClassName('Actual_body')[0];
+        myDiv.scrollTop = 0;
+    }, []);
     
 
     return (

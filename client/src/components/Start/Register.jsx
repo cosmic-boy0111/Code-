@@ -73,24 +73,24 @@ const Register = ({setPage}) => {
           <form onSubmit={ handleSubmit } id='register_form'>
             <div class="mb-2">
               <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control bg-grey" id="name" name='name' value={userData.name} onChange={handleInput} required/>
+              <input type="text" class="form-control" id="name" name='name' value={userData.name} onChange={handleInput} required/>
             </div>
             <div class="mb-2">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control bg-grey" id="email" name='email' value={userData.email} onChange={handleInput} required/>
+              <input type="email" class="form-control" id="email" name='email' value={userData.email} onChange={handleInput} required/>
             </div>
             
             <div class="mb-2">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control bg-grey" id="password" name='password' value={userData.password} onChange={handleInput} required/>
+              <input type="password" class="form-control" id="password" name='password' value={userData.password} onChange={handleInput} required/>
             </div>
             <div class="mb-2">
               <label for="cPassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control bg-grey" id="cPassword" name='cPassword' value={userData.cPassword} onChange={handleInput} required/>
+              <input type="password" class="form-control" id="cPassword" name='cPassword' value={userData.cPassword} onChange={handleInput} required/>
             </div>
             <div class="mb-3">
               <label for="key" class="form-label">Security Key</label>
-              <input type="text" class="form-control bg-grey" id="key" placeholder='Which thing makes you happy ?' name='key' value={userData.key} onChange={handleInput} required/>
+              <input type="text" class="form-control" id="key" placeholder='Which thing makes you happy ?' name='key' value={userData.key} onChange={handleInput} required/>
               <span id="key" class="form-text">This will be set as your Security Key</span>
             </div>
           <Button type='submit' variant="contained" style={{width:'100%'}} >create account</Button>

@@ -89,24 +89,6 @@ const headCells = [
     disablePadding: false,
     label: 'Difficulty',
   },
-  // {
-  //   id: 'fat',
-  //   numeric: true,
-  //   disablePadding: false,
-  //   label: 'Fat (g)',
-  // },
-  // {
-  //   id: 'carbs',
-  //   numeric: true,
-  //   disablePadding: false,
-  //   label: 'Carbs (g)',
-  // },
-  // {
-  //   id: 'protein',
-  //   numeric: true,
-  //   disablePadding: false,
-  //   label: 'Protein (g)',
-  // },
 ];
 
 function EnhancedTableHead(props) {
@@ -216,7 +198,7 @@ export default function EnhancedTable() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(500);
+  const [rowsPerPage, setRowsPerPage] = React.useState(300);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -269,7 +251,7 @@ export default function EnhancedTable() {
   //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%' }} >
+    <Box sx={{ width: '100%' }} className='table_container' >
       <Paper sx={{ width: '100%', mb: 2 }} className='table_body'>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
@@ -291,6 +273,7 @@ export default function EnhancedTable() {
                  rows.slice().sort(getComparator(order, orderBy)) */}
                 {/* .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) */}
               {stableSort(rows, getComparator(order, orderBy))
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
@@ -339,7 +322,7 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[500, 700, 1000]}
+          rowsPerPageOptions={[300,400,500]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

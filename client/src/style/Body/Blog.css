@@ -64,11 +64,14 @@
 }
 
 .css-1160xiw-MuiPaper-root-MuiDrawer-paper{
-    width: 75%;
-    border-radius: 10px 0 0 10px;
+    width: 70%; 
+    border-radius: 5px 0 0 5px;
     background-color: #f0f2f5 !important;
-    /* padding: 1rem; */
     
+}
+
+.Blog_drawer{
+    overflow-x: auto;
 }
 
 .heading{
@@ -80,6 +83,7 @@
     top: 0;
     background-color: #f0f2f5;
     padding: 1rem;
+    z-index: 10000;
 }
 
 .create_blog{
@@ -118,7 +122,7 @@
     padding: 0 1rem;
 }
 
-@media screen and (max-width : 800px) {
+@media screen and (max-width : 900px) {
     .blog_search{
         width: max-content;
     }
@@ -128,7 +132,8 @@
     }
 
     .css-1160xiw-MuiPaper-root-MuiDrawer-paper{
-        width: 100%;
+        width: 100% !important;
         border-radius: 0px;
     }
+
 }
