@@ -67,6 +67,7 @@
     width: 70%; 
     border-radius: 5px 0 0 5px;
     background-color: #f0f2f5 !important;
+    box-shadow: none !important;
     
 }
 
@@ -122,6 +123,12 @@
     padding: 0 1rem;
 }
 
+.css-1ri6ub7-MuiPaper-root-MuiCard-root{
+    min-width: 500px !important;
+    margin: 1rem;
+    box-shadow: none !important;
+}
+
 @media screen and (max-width : 900px) {
     .blog_search{
         width: max-content;
@@ -129,6 +136,10 @@
 
     .blog_container{
         width: 100%;
+    }
+
+    .css-1ri6ub7-MuiPaper-root-MuiCard-root{
+        min-width: 100% !important;
     }
 
     .css-1160xiw-MuiPaper-root-MuiDrawer-paper{

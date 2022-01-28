@@ -34,6 +34,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    margin-bottom: 1rem;
 }
 
 .bg-grey{

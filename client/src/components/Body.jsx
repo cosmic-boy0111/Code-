@@ -14,7 +14,6 @@ import DashBoard from './DashBoard/DashBoard';
 import { AppContext } from '../App';
 import Cpp from './Body/Programming/Languages/Cpp/Cpp';
 import TemporaryDrawer from './Navbar/Drawer';
-
 const Body = () => {
 
   const {rootUser, setRootUser} = useContext(AppContext);
@@ -45,7 +44,7 @@ const Body = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  },[]);
   return(
     <>
       <div className='App'>
@@ -57,6 +56,7 @@ const Body = () => {
               <div className='Body_container'>
                   <HeadNav />
                   <div className='Actual_body'>
+                      
                       <Routes>
                         <Route exact path='/' element={<DashBoard />} />
                         <Route exact path='/blog' element={<Blog />} />

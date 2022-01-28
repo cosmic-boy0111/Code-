@@ -21,7 +21,7 @@ const MenuProps = {
 
 
 
-export default function MultipleSelectCheckmarks({tags, value , setValue , multi}) {
+export default function MultipleSelectCheckmarks({tags, value , setValue , multi, setErr}) {
 
 
   const handleChange = (event) => {
@@ -32,6 +32,7 @@ export default function MultipleSelectCheckmarks({tags, value , setValue , multi
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    setErr(false)
   };
 
   return (

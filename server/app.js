@@ -16,7 +16,7 @@ app.use(myParser.urlencoded({limit: '200mb', extended: true}));
 app.use(myParser.text({ limit: '200mb' }));
 
 app.use(require('./router/auth'));
-app.use(require('./router/programming/CppProblemsRoutes'));
+app.use(require('./router/programming/Cpp/CppProblemsRoutes'));
 
 const PORT = process.env.PORT;
 

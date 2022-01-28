@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import '../../../style/Body/Programming.css'
-import code from '../../../images/assets/code.jpg'
+import code from '../../../images/assets/newCode.jpg'
 import Card from './Card'
 
 import c_lang from '../../../images/assets/Programming_language/letter-c.png'
@@ -17,6 +17,7 @@ import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { CardMedia } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -75,9 +76,18 @@ const Programming = () => {
   return (
     <>
       <div className='code_container'>
-        <div className='code_img'>
+        {/* <div className='code_img'>
           <img src={code} alt="" className='header_img'/>
-        </div>
+        </div> */}
+        <CardMedia
+        component="img"
+        height="195"
+        image={code}
+        alt="Paella dish"
+        style={{
+          borderRadius:'4px'
+        }}
+      />
         <header className='tech_header'>
           <img src={logo} alt="" srcset="" className='logo'/> <h2>PROGRAMMING</h2>
         </header>

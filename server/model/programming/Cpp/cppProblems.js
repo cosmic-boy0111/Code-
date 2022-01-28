@@ -18,12 +18,16 @@ const cppProblems = new mongoose.Schema({
         default : []
     },
     difficulty : {
-        type : String,
+        type : Number,
         required : true
     },
     testCases : {
         type : Array,
         default : []
+    },
+    owner : {
+        type : Object,
+        default : {}
     }
 })
 

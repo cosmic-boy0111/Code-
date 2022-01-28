@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Profile from './components/Body/Profile/Profile';
 import Programming from './components/Body/Programming/Programming';
 import Body from './components/Body';
-import load from './videos/share.mp4'
+import load from './videos/rocket.mp4'
 import './App.css'
 export const AppContext = createContext();
 
@@ -53,19 +53,19 @@ const App = () => {
     setState2({ ...state2, [anchor]: open });
   };
 
-  const [toggleState3, setToggleState3] = useState({
-    right: false,
-  });
+  // const [toggleState3, setToggleState3] = useState({
+  //   right: false,
+  // });
 
 
 
-  const toggleDrawer3 = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
+  // const toggleDrawer3 = (anchor, open) => (event) => {
+  //   if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+  //     return;
+  //   }
 
-    setToggleState3({ ...toggleState3, [anchor]: open });
-  };
+  //   setToggleState3({ ...toggleState3, [anchor]: open });
+  // };
 
 
   
@@ -95,8 +95,9 @@ const App = () => {
           setRootUser,
           toggleDrawer2,
           state2,
-          toggleDrawer3,
-          toggleState3
+          // toggleDrawer3,
+          // toggleState3,
+          // setToggleState3
         }}>
 
         <Routes>

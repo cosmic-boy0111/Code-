@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useContext} from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -14,31 +14,25 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
 import { visuallyHidden } from '@mui/utils';
+import load from '../../../../../videos/unboxing.mp4'
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ModeEditOutlineRoundedIcon from '@mui/icons-material/ModeEditOutlineRounded';
+import {AppContext} from '../../../../../App'
+import { toast } from 'react-toastify'
+import { CppContext } from './Cpp';
+import { Button } from '@mui/material';
+import Problem from './Problem'
 
-function createData(name,  tag , difficulty,id) {
+function createData(title,  tag , difficulty,id) {
   return {
-    name,
-    tag,
+    title,
     difficulty,
+    tag,
     id
   };
 }
 
-const rows = [
-  createData('Cupcake', 'Array' ,0,12),
-  createData('Donut', 'String' ,0,12),
-  createData('Eclair', 'Array' , 0,12),
-  createData('Frozen yoghurt', 'Binary Search' ,0,12),
-  createData('Gingerbread', 'Greedy' , 1,12),
-  createData('Honeycomb', 'Linked List' ,1,12),
-  createData('Ice cream sandwich', 'Dynamic' , 1,12),
-  createData('Jelly Bean', 'Greedy' ,1,12),
-  createData('KitKat', 'Stack' ,1,12),
-  createData('Lollipop', 'Queue' , 2,12),
-  createData('Marshmallow', 'Graph' , 2,12),
-  createData('Nougat', 'Queue' ,2,12),
-  createData('Oreo', 'Stack',2,12),
-];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -72,21 +66,27 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'name',
+    id: 'title',
     numeric: false,
     disablePadding: true,
     label: 'Problem',
   },
   {
-    id: 'tag',
+    id: '_id',
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
+    label: '',
+  },
+  {
+    id: 'mainTag',
+    numeric: true,
+    disablePadding: true,
     label: 'Tag',
   },
   {
     id: 'difficulty',
     numeric: true,
-    disablePadding: false,
+    disablePadding: true,
     label: 'Difficulty',
   },
 ];
@@ -122,7 +122,10 @@ function EnhancedTableHead(props) {
             <TableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
+              onClick={ headCell.id === '_id' ? `` : createSortHandler(headCell.id)}
+              style={{
+                display : headCell.id === '_id' ? 'none' : 'block'
+              }}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -193,12 +196,29 @@ EnhancedTableToolbar.propTypes = {
 const diff = ['Easy','Medium','Hard']
 const col = ['#00e676','#eeff41','#ff6e40']
 export default function EnhancedTable() {
+
+  const { rootUser } = useContext(AppContext)
+  const {
+    rows,
+    setRows,
+    setToggle,
+    setProblem,
+    setTag,
+    setDifficulty,
+    setCase1,
+    setCase2,
+    setCase3
+  }  = useContext(CppContext)
+
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(300);
+  const [rowsPerPage, setRowsPerPage] = React.useState(100);
+  const [problemData, setProblemData] = React.useState({});
+
+  const [open, setOpen] = React.useState(false);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -215,25 +235,91 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    // const selectedIndex = selected.indexOf(name);
-    // let newSelected = [];
-    console.log(event,name);
-    // if (selectedIndex === -1) {
-    //   newSelected = newSelected.concat(selected, name);
-    // } else if (selectedIndex === 0) {
-    //   newSelected = newSelected.concat(selected.slice(1));
-    // } else if (selectedIndex === selected.length - 1) {
-    //   newSelected = newSelected.concat(selected.slice(0, -1));
-    // } else if (selectedIndex > 0) {
-    //   newSelected = newSelected.concat(
-    //     selected.slice(0, selectedIndex),
-    //     selected.slice(selectedIndex + 1),
-    //   );
+  const handleClick = (row) => {
+    console.log(row);
+    setProblemData(row)
+    setOpen(true)
+  };
+
+  
+  const getDiff = (diff) =>{
+    if(diff === 0){
+      return ['Easy'];
+    }else if(diff === 1){
+      return ['Medium'];
+    }
+
+    return ['Hard'];
+  }
+
+  const EditProblem =  (row) =>{
+
+    // if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    //   return;
     // }
 
-    // setSelected(newSelected);
-  };
+    if(row.owner._id !== rootUser._id){
+      return;
+    }
+
+    console.log(row);
+    setProblem({
+      id : row._id,
+      title : row.title,
+      description : row.description
+    })
+    setTag([row.mainTag,...row.subTags])
+    setDifficulty(getDiff(row.difficulty))
+    setCase1({
+      input : row.testCases[0].input,
+      output : row.testCases[0].output,
+    })
+    setCase2({
+      input : row.testCases[1].input,
+      output : row.testCases[1].output,
+    })
+    setCase3({
+      input : row.testCases[2].input,
+      output : row.testCases[2].output,
+    })
+    setToggle(true)
+
+  }
+
+  const deleteProblem = async (row) =>{
+    // console.log(id);
+    if(row.owner._id !== rootUser._id){
+      return;
+    }
+
+    // eslint-disable-next-line no-restricted-globals
+    if(!confirm('Want to delete ? ')){
+      return
+    }
+    
+
+    try {
+      const res = await fetch(`/cpp/deleteProblem/${row._id}`,{
+        method:'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        }
+      })
+
+      setRows(()=>{
+        return rows.filter((e)=>{
+          return e._id !== row._id;
+        })
+      })
+
+
+
+      console.log(res);
+      toast.success('Problem Deleted')
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -251,7 +337,22 @@ export default function EnhancedTable() {
   //   page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%' }} className='table_container' >
+    <>
+    <Problem open={open} setOpen={setOpen} problem={problemData}/>
+    <div style={{
+      display: rows.length === 0 ? 'flex' : 'none'
+    }}
+    className='Empty'
+    >
+      <video playsInline={true} preload='auto' autoPlay={true} loop={false} muted={true} className='video' >
+                <source src={load} type="video/mp4" style={{
+                    borderRadius:'5px'
+                }}/>
+            </video>
+    </div>
+    <Box sx={{ width: '100%' }} className='table_container' style={{
+      display: rows.length === 0 ? 'none' : 'block'
+    }}>
       <Paper sx={{ width: '100%', mb: 2 }} className='table_body'>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
@@ -281,11 +382,11 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row)}
+                      
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.title}
                       // selected={isItemSelected}
                     >
                       <TableCell >
@@ -296,11 +397,23 @@ export default function EnhancedTable() {
                         id={labelId}
                         scope="row"
                         padding="none"
-                       
+                        onClick={() => handleClick(row)}
                       >
-                        <span style={{color:'#1890ff',cursor:'pointer'}} >{row.name}</span>
+                        <span style={{color:'#1890ff',cursor:'pointer'}} >{row.title}</span>
                       </TableCell>
-                      <TableCell align="right">{row.tag}</TableCell>
+                      <TableCell align="right" className='Action'>
+                        <span style={{
+                          display: rootUser._id === row.owner._id ? 'inline' : 'none'
+                        }}>
+                          <Button  onClick={()=>EditProblem(row)}>
+                            <ModeEditOutlineRoundedIcon />
+                          </Button>
+                          <Button color="secondary"  onClick={()=>deleteProblem(row)}>
+                            <DeleteIcon />
+                          </Button>
+                        </span>
+                      </TableCell>
+                      <TableCell align="right">{row.mainTag}</TableCell>
                       <TableCell align="right"> <span className='diff' style={{
                         backgroundColor: col[row.difficulty]
                       }}>{diff[row.difficulty]}</span> </TableCell>
@@ -322,7 +435,7 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[300,400,500]}
+          rowsPerPageOptions={[50,100,300,500]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -333,5 +446,6 @@ export default function EnhancedTable() {
       </Paper>
       
     </Box>
+    </>
   );
 }

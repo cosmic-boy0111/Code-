@@ -4,6 +4,7 @@ import search from '../../images/icon/search.png'
 import Button from '@mui/material/Button';
 import { AppContext } from '../../App';
 import menu from '../../images/icon/menu.png'
+import Slider from './Slider'
 const HeadNav = () => {
 
     const {toggleDrawer2} = useContext(AppContext)
@@ -12,7 +13,7 @@ const HeadNav = () => {
         <nav className='head_nav'>
             
             <div className='app_logo'>
-
+                {/* <Slider /> */}
             </div>
             <div className='search'>
                 <img src={search} alt="" srcset="" className='search_icon'/>

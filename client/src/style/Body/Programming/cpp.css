@@ -79,7 +79,6 @@
     appearance: none;
     border-radius: 0.25rem;
     background-color: #f0f2f5;
-
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
@@ -116,6 +115,103 @@
     width: 49%;
 }
 
+.Red{
+    color: #f50057;
+}
+
+.Empty{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: .5rem;
+}
+
+.Empty .video{
+    width: 200px;
+}
+
+.Action{
+    display: inline;
+    padding: 0 .5rem !important;
+
+}
+
+.Alert{
+    position: absolute;
+    top: 0rem;
+    /* right: 1rem; */
+    animation-name: alert;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+.alert_button{
+    padding: .5rem;
+    cursor: pointer;
+}
+
+#drawer_page{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    width: 0;
+    box-sizing: border-box;
+    background-color: white;
+    transition: all .5s ease;
+    z-index: 10;
+}
+
+
+
+@keyframes alert{
+    0%   {top: 0rem}
+  100% {top: 4rem}
+}
+
+.model_body{
+    background-color: #f0f2f5 !important;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.MuiDialogTitle-root+.css-ypiqx9-MuiDialogContent-root{
+    padding: 0 !important;
+}
+
+.css-2zwj5t-MuiPaper-root-MuiDialog-paper{
+    margin: .5rem !important;
+    width: 100%;
+    box-shadow: none !important;
+}
+
+.problem_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.problem_body{
+    padding: 0 1rem;
+}
+
+.test_case_holder{
+    display: flex;
+    margin: .5rem 0;
+    color: black;
+    flex-direction: column;
+}
+
+.input_output{
+    background-color: #f0f2f5 !important;
+    padding: .5rem;
+    border-radius: 4px;
+}
+
+
 @media screen and (max-width : 800px) {
     .Accordion_container{
         width: 100% !important;
@@ -127,5 +223,13 @@
     }
     .selector_field{
         width: 100%;
+    }
+
+    .css-2zwj5t-MuiPaper-root-MuiDialog-paper.MuiDialog-paperScrollBody{
+        max-width: none !important;
+    }
+
+    .css-2zwj5t-MuiPaper-root-MuiDialog-paper{
+        width: 95% !important;
     }
 }
