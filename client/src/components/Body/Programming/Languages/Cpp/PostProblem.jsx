@@ -111,6 +111,7 @@ export default function TemporaryDrawer() {
       // toggleDrawer3('right', false)
 
       setProblem({
+        id: '',
         title : '',
         description : '',
       })
