@@ -5,7 +5,9 @@
     width: 20%;
     padding: 0 1rem;
     border-radius: 20px;
-    position: absolute;
+    position: sticky;
+    left: 0;
+    top: 5rem;
 }
 
 .blog_body{
@@ -58,8 +60,10 @@
 }
 
 .create_post{
-    position: absolute;
+    position: fixed;
     bottom: 1.5rem;
+    display: inline;
+    justify-content: flex-end;
     right: 1.5rem;
 }
 

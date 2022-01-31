@@ -3,10 +3,14 @@
     justify-content: space-between;
     padding: .5rem 0.5rem;
     /* border: 1px solid red; */
-    background-color: white;
+    /* background-color: #f0f2f57c; */
+    background-color: transparent;
     align-items: center;
     width: 100%;
-    /* border-bottom: 1.5px solid #DFDFDF; */
+    backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    z-index: 10;
 }
 
 .app_logo img{

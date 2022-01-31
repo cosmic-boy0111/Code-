@@ -101,7 +101,7 @@ const App = () => {
         }}>
 
         <Routes>
-          <Route  path='*' element={<Body />} />
+          <Route exact path='*' element={<Body />} />
           <Route path='/login' element={<Initial />} />
         </Routes>
         </AppContext.Provider>

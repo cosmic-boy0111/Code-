@@ -19,10 +19,10 @@ const Body = () => {
   const {rootUser, setRootUser} = useContext(AppContext);
 
   
-  useEffect(() => {
-    var myDiv = document.getElementsByClassName('Actual_body')[0];
-    myDiv.scrollTop = 0;
-  }, []);
+  // useEffect(() => {
+  //   var myDiv = document.getElementsByClassName('Actual_body')[0];
+  //   myDiv.scrollTop = 0;
+  // }, []);
 
     let navigate = useNavigate();
   const getData = async() =>{
@@ -47,9 +47,9 @@ const Body = () => {
   },[]);
   return(
     <>
-      <div className='App'>
+      {/* <div className='App'>
           <div className='Body'>
-              <div>
+              <div >
                   <SideNav />
                   <TemporaryDrawer />
               </div>
@@ -68,6 +68,24 @@ const Body = () => {
               </div>
 
           </div>
+      </div> */}
+
+      <div className='Body'>
+        <SideNav />
+        <TemporaryDrawer />
+        <div className='Body_container'>
+          <HeadNav />
+          <div className='Actual_body'>
+                      
+                      <Routes>
+                        <Route exact path='/' element={<DashBoard />} />
+                        <Route exact path='/blog' element={<Blog />} />
+                        <Route exact path='/profile' element={<Profile />} />
+                        <Route exact path='/programming' element={<Programming />} />
+                        <Route exact path='/programming/cpp' element={<Cpp />} />
+                      </Routes>
+                  </div>
+        </div>
       </div>
     </>
   );
