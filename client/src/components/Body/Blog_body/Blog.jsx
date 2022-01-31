@@ -21,37 +21,24 @@ const Blog = () => {
 
     return (
         <>
-        {/* <div className='App'>
-            <div className='Body'>
-                <div>
-                    <SideNav />
-                </div>
-                <div className='Body_container'>
-                    <HeadNav />
-                    <div className='Actual_body'> */}
-                        <div className='blog_search'>
-                            <img src={search} alt="" srcset="" className='search_icon'/>
-                            <input type="text" name="" id="" className='search_bar' placeholder='Search blog...'/>
-                        </div>
-                        <section className='blog_body'>
-                            <BlogContainer />
-                            <BlogContainer />
-                            <BlogContainer />
-                            <BlogContainer />
-                            <BlogContainer />
-                            <BlogContainer />
-                        </section>
-                        <div className='create_post'>
-                            <Fab color="primary" aria-label="add" onClick={toggleDrawer('right', true)}>
-                                <AddIcon />
-                            </Fab>
-                        </div>
-                        <TemporaryDrawer />
-                    {/* </div>
-                </div>
-
+            <div className='blog_search'>
+                <img src={search} alt="" srcset="" className='search_icon'/>
+                <input type="text" name="" id="" className='search_bar' placeholder='Search blog...'/>
             </div>
-        </div> */}
+            <section className='blog_body'>
+                <BlogContainer />
+                <BlogContainer />
+                <BlogContainer />
+                <BlogContainer />
+                <BlogContainer />
+                <BlogContainer />
+            </section>
+            <div className='create_post'>
+                <Fab color="primary" aria-label="add" onClick={toggleDrawer('right', true)}>
+                    <AddIcon />
+                </Fab>
+            </div>
+            <TemporaryDrawer />
         </>
     )
 }

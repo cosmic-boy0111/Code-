@@ -20,6 +20,7 @@ export default function ScrollDialog({open,setOpen,problem}) {
     }
   }, [open]);
 
+  var [counter, setCounter] = React.useState(1);
   
 const diff = ['Easy','Medium','Hard']
 const col = ['#00e676','#eeff41','#ff6e40']
@@ -81,7 +82,7 @@ const col = ['#00e676','#eeff41','#ff6e40']
                           return ``;
                       }
                       return <div className='test_case_holder'>
-                            <h6>Example</h6>
+                            <h6>Example {counter++}</h6>
                             <div className='input_output'>
                                 <div>Input : {e.input}</div>
                                 <div>Output : {e.output}</div>

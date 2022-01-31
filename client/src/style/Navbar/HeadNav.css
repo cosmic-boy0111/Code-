@@ -9,6 +9,10 @@
     /* border-bottom: 1.5px solid #DFDFDF; */
 }
 
+.app_logo img{
+    height: 40px;
+}
+
 .search{
     background-color: #f0f2f5;
     border-radius: 20px;
