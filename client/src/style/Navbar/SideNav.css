@@ -1,11 +1,21 @@
+
 .side_nav{
     display: inline-flex;
     height: 100vh;
-    background-color: white;
+    /* background-color: white; */
+    /* background-color: black; */
     padding: .2rem .8rem;
     flex-direction: column;
-    /* border-right: 1.5px solid #DFDFDF; */
+    /* border: 1px solid red; */
+    padding: 0 1rem;
+    position: fixed;
+    left: 0;
+    /* overflow-y: scroll; */
+    z-index: 11;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+    
 }
+
 .side_nav2{
     display: inline-flex;
     height: 100vh;
@@ -19,12 +29,14 @@
     height: 30px;
     border-radius: 50%;
 
-    margin: .5rem 0;
+    margin: 1rem 0;
+
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .Open_side_drawer{
-    display: none !important;
+    visibility: hidden !important;
+    color: rgb(36, 153, 239);
 }
 
 .link2{
@@ -38,12 +50,14 @@
 }
 
 
+
 @media screen and (max-width : 900px){
     .Open_side_drawer{
-        display: block !important;
+        visibility: visible !important;
     }
 
     .side_nav{
         display: none !important;
+        box-shadow: rgb(0, 0, 0) 0px 8px 24px !important;
     }
 }

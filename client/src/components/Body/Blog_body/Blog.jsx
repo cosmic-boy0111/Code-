@@ -6,24 +6,31 @@ import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import TemporaryDrawer from './CreateBlog'
 import { AppContext } from '../../../App'
-
+import { Theme } from '../../Theme';
 
 const Blog = () => {
 
 
-    const {toggleDrawer} = useContext(AppContext)
+    const {toggleDrawer, themeToggler} = useContext(AppContext)
     
     useEffect(() => {
-        var myDiv = document.getElementsByClassName('Actual_body')[0];
+        var myDiv = document.getElementsByTagName("body")[0];
         myDiv.scrollTop = 0;
+        window.scrollTo(0, 0);
     }, []);
     
 
     return (
         <>
-            <div className='blog_search'>
+            <div className='blog_search' style={{
+                 backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+                 color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                 boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+            }}>
                 <img src={search} alt="" srcset="" className='search_icon'/>
-                <input type="text" name="" id="" className='search_bar' placeholder='Search blog...'/>
+                <input type="text" name="" id="" className='search_bar' placeholder='Search blog...' style={{
+                    color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+                }}/>
             </div>
             <section className='blog_body'>
                 <BlogContainer />

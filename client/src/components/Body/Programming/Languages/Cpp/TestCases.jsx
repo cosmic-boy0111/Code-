@@ -1,9 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { AppContext } from '../../../../../App';
+import { Theme } from '../../../../Theme';
+import { IconButton } from '@mui/material';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+
 
 export default function ControlledAccordions({
     case1,
@@ -19,50 +24,21 @@ export default function ControlledAccordions({
     setExpanded(isExpanded ? panel : false);
   };
 
-  // const handleTestCases = (index,name,value) =>{
+  const { themeToggler } = useContext(AppContext);
 
-  //   console.log(value);
 
-  //   if(index === 0){
-  //     if(name === 'input'){
-  //       setCase1({'output' : case1.output,'input':value});
-  //     }else{
-  //       setCase1({'input' : case1.input,'output':value});
-  //     }
-  //     // testCases[0] = case1;
-  //     // console.log(case1);
-  //     // setTestCases(testCases)
-  //   }
-  //   else if(index === 1){
-  //     // setCase2({...case2,[name]:value});
-  //     if(name === 'input'){
-  //       setCase2({...case2,'input':value});
-  //     }else{
-  //       setCase2({...case2,'output':value});
-  //     }
-  //     // testCases[1] = case2;
-  //     // setTestCases(testCases)
-  //   }
-  //   else if(index === 2){
-  //     // setCase3({...case3,[name]:value});
-  //     if(name === 'input'){
-  //       setCase3({...case3,'input':value});
-  //     }else{
-  //       setCase3({...case3,'output':value});
-  //     }
-  //     // testCases[2] = case3;
-  //     // setTestCases(testCases)
-  //   }
-
-  //   // console.log(testCases);
-  //   console.log(case1,case2,case3);
-  // }
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className='test_case' >
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className='test_case' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={ <IconButton style={{
+            color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+          }}><ExpandMoreIcon /></IconButton>}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
@@ -74,18 +50,58 @@ export default function ControlledAccordions({
           <Typography>
             <div class="mb-3">
                 <label for="title" class="form-label">Input</label>
-                <textarea className='test_case' id="title" rows={3} value={case1.input} onChange={(e)=>setCase1({...case1,'input': e.target.value})} ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case1.input} onChange={(e)=>setCase1({...case1,'input': e.target.value})} style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }} ></textarea> */}
+
+                  <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case1.input} 
+                    onChange={(e)=>setCase1({...case1,'input': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                  />
+
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Output</label>
-                <textarea className='test_case' id="title" rows={3} value={case1.output} onChange={(e)=>setCase1({...case1,'output': e.target.value})}  ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case1.output} onChange={(e)=>setCase1({...case1,'output': e.target.value})}  style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }}></textarea> */}
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case1.output} 
+                    onChange={(e)=>setCase1({...case1,'output': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                  />
             </div>
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className='test_case'>
+      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} className='test_case' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={ <IconButton style={{
+            color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+          }}><ExpandMoreIcon /></IconButton>}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
@@ -97,18 +113,56 @@ export default function ControlledAccordions({
           <Typography>
             <div class="mb-3">
                 <label for="title" class="form-label">Input</label>
-                <textarea className='test_case' id="title" rows={3} value={case2.input} onChange={(e)=>setCase2({...case2,'input': e.target.value})}  ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case2.input} onChange={(e)=>setCase2({...case2,'input': e.target.value})}  style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }}></textarea> */}
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case2.input} 
+                    onChange={(e)=>setCase2({...case2,'input': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                />
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Output</label>
-                <textarea className='test_case' id="title" rows={3} value={case2.output} onChange={(e)=>setCase2({...case2,'output': e.target.value})}  ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case2.output} onChange={(e)=>setCase2({...case2,'output': e.target.value})}  style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }}></textarea> */}
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case2.output} 
+                    onChange={(e)=>setCase2({...case2,'output': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                />
             </div>
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} className='test_case' >
+      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} className='test_case' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={ <IconButton style={{
+            color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+          }}><ExpandMoreIcon /></IconButton>}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
@@ -120,11 +174,43 @@ export default function ControlledAccordions({
           <Typography>
             <div class="mb-3">
                 <label for="title" class="form-label">Input</label>
-                <textarea className='test_case' id="title" rows={3} value={case3.input} onChange={(e)=>setCase3({...case3,'input': e.target.value})}  ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case3.input} onChange={(e)=>setCase3({...case3,'input': e.target.value})} style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }} ></textarea> */}
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case3.input} 
+                    onChange={(e)=>setCase3({...case3,'input': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                />
             </div>
             <div class="mb-3">
                 <label for="title" class="form-label">Output</label>
-                <textarea className='test_case' id="title" rows={3} value={case3.output} onChange={(e)=>setCase3({...case3,'output': e.target.value})}  ></textarea>
+                {/* <textarea className='test_case' id="title" rows={3} value={case3.output} onChange={(e)=>setCase3({...case3,'output': e.target.value})}  style={{
+                  backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                }}></textarea> */}
+                <TextareaAutosize
+                    aria-label="minimum height"
+                    minRows={2}
+                    name="description"
+                    class="form-control"
+                    value={case3.output} 
+                    onChange={(e)=>setCase3({...case3,'output': e.target.value})}
+                    style={{
+                      backgroundColor : themeToggler ? Theme.Dark.FadeBackground : Theme.Light.FadeBackground,
+                      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                      boxShadow : 'none'
+                    }}
+                />
             </div>
           </Typography>
         </AccordionDetails>

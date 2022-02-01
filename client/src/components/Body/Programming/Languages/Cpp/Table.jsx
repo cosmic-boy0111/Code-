@@ -4,7 +4,7 @@ import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell,{ tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
@@ -23,6 +23,8 @@ import { toast } from 'react-toastify'
 import { CppContext } from './Cpp';
 import { Button } from '@mui/material';
 import Problem from './Problem'
+import { Theme } from '../../../../Theme';
+
 
 function createData(title,  tag , difficulty,id) {
   return {
@@ -92,7 +94,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort, themeToggler } =
     props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -127,7 +129,7 @@ function EnhancedTableHead(props) {
                 display : headCell.id === '_id' ? 'none' : 'block'
               }}
             >
-              {headCell.label}
+              <span style={{color : themeToggler ? Theme.Dark.Color : Theme.Light.Color}} >{headCell.label}</span> 
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -148,6 +150,7 @@ EnhancedTableHead.propTypes = {
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
+  themeToggler : PropTypes.number
 };
 
 const EnhancedTableToolbar = (props) => {
@@ -197,7 +200,7 @@ const diff = ['Easy','Medium','Hard']
 const col = ['#00e676','#eeff41','#ff6e40']
 export default function EnhancedTable() {
 
-  const { rootUser } = useContext(AppContext)
+  const { rootUser, themeToggler } = useContext(AppContext)
   const {
     rows,
     setRows,
@@ -340,7 +343,8 @@ export default function EnhancedTable() {
     <>
     <Problem open={open} setOpen={setOpen} problem={problemData}/>
     <div style={{
-      display: rows.length === 0 ? 'flex' : 'none'
+      display: rows.length === 0 ? 'flex' : 'none',
+      backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
     }}
     className='Empty'
     >
@@ -351,13 +355,23 @@ export default function EnhancedTable() {
             </video>
     </div>
     <Box sx={{ width: '100%' }} className='table_container' style={{
-      display: rows.length === 0 ? 'none' : 'block'
+      display: rows.length === 0 ? 'none' : 'block',
     }}>
-      <Paper sx={{ width: '100%', mb: 2 }} className='table_body'>
+      <Paper sx={{ width: '100%', mb: 2 }} className='table_body' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
-            sx={{ minWidth: 750 }}
+            // sx={{ minWidth: 750,borderBottom: "none" }}
+            sx={{
+              minWidth: 750,
+    [`& .${tableCellClasses.root}`]: {
+      borderBottom: "none"
+    }
+  }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
           >
@@ -368,6 +382,7 @@ export default function EnhancedTable() {
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
+              themeToggler = {themeToggler}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
@@ -388,9 +403,10 @@ export default function EnhancedTable() {
                       tabIndex={-1}
                       key={row.title}
                       // selected={isItemSelected}
+                      style={{borderBottom:"none"}}
                     >
                       <TableCell >
-                        {index+1}
+                      <span style={{color : themeToggler ? Theme.Dark.Color : Theme.Light.Color}} >{index+1} </span> 
                       </TableCell>
                       <TableCell
                         component="th"
@@ -413,7 +429,7 @@ export default function EnhancedTable() {
                           </Button>
                         </span>
                       </TableCell>
-                      <TableCell align="right">{row.mainTag}</TableCell>
+                      <TableCell align="right"> <span style={{color : themeToggler ? Theme.Dark.Color : Theme.Light.Color}} > {row.mainTag} </span></TableCell>
                       <TableCell align="right"> <span className='diff' style={{
                         backgroundColor: col[row.difficulty]
                       }}>{diff[row.difficulty]}</span> </TableCell>
@@ -442,6 +458,9 @@ export default function EnhancedTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          style={{
+            color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+          }}
         />
       </Paper>
       

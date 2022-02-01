@@ -19,12 +19,12 @@
 }
 
 .Accordion_container{
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
     width: 70% !important;
 }
 
 .table_body{
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
     margin-top: .5rem;
     box-sizing: border-box !important;
     margin-bottom: 5rem !important;
@@ -63,7 +63,7 @@
 }
 
 .test_case{
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
     border: none;
     outline: none;
     display: block;
@@ -78,14 +78,18 @@
     -moz-appearance: none;
     appearance: none;
     border-radius: 0.25rem;
-    background-color: #f0f2f5;
+    /* background-color: #f0f2f5; */
 }
 
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
     padding: 8.5px 14px !important;
-    background-color: white !important;
+    /* background-color: white !important; */
     border: none !important;
     outline: none !important;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list{
+    padding: 0 !important;
 }
 
 .css-2m9kme-MuiFormControl-root{
@@ -100,7 +104,7 @@
 }
 
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper{
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
     border: none !important;
     margin-top: .5rem;
 }
@@ -185,7 +189,7 @@
 .css-2zwj5t-MuiPaper-root-MuiDialog-paper{
     margin: .5rem !important;
     width: 100%;
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
 }
 
 .problem_header{
@@ -206,7 +210,7 @@
 }
 
 .input_output{
-    background-color: #f0f2f5 !important;
+    /* background-color: #f0f2f5 !important; */
     padding: .5rem;
     border-radius: 4px;
 }

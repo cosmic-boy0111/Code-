@@ -14,14 +14,18 @@ import DashBoard from './DashBoard/DashBoard';
 import { AppContext } from '../App';
 import Cpp from './Body/Programming/Languages/Cpp/Cpp';
 import TemporaryDrawer from './Navbar/Drawer';
+
+import { Theme } from './Theme'; 
+
 const Body = () => {
 
-  const {rootUser, setRootUser} = useContext(AppContext);
+  const {rootUser, setRootUser,themeToggler} = useContext(AppContext);
 
   
   useEffect(() => {
-    var myDiv = document.getElementsByClassName('Actual_body')[0];
+    var myDiv = document.getElementsByTagName("body")[0];
     myDiv.scrollTop = 0;
+    window.scrollTo(0, 0);
   }, []);
 
     let navigate = useNavigate();
@@ -47,9 +51,9 @@ const Body = () => {
   },[]);
   return(
     <>
-      <div className='App'>
+      {/* <div className='App'>
           <div className='Body'>
-              <div>
+              <div >
                   <SideNav />
                   <TemporaryDrawer />
               </div>
@@ -68,6 +72,27 @@ const Body = () => {
               </div>
 
           </div>
+      </div> */}
+
+      <div className='Body'>
+        <SideNav />
+        <TemporaryDrawer />
+        <div className='Body_container' style={{
+          backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor,
+          color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+        }}>
+          <HeadNav />
+          <div className='Actual_body'>
+                      
+                      <Routes>
+                        <Route exact path='/' element={<DashBoard />} />
+                        <Route exact path='/blog' element={<Blog />} />
+                        <Route exact path='/profile' element={<Profile />} />
+                        <Route exact path='/programming' element={<Programming />} />
+                        <Route exact path='/programming/cpp' element={<Cpp />} />
+                      </Routes>
+                  </div>
+        </div>
       </div>
     </>
   );

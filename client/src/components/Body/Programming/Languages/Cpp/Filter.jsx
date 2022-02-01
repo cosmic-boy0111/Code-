@@ -11,12 +11,17 @@ import Button from '@mui/material/Button';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
 import { CppContext } from './Cpp';
+import { AppContext } from '../../../../../App';
+import { Theme } from '../../../../Theme';
+import { IconButton } from '@mui/material';
+
 export default function SimpleAccordion() {
 
   const [selectedTags, setSelectedTags] = useState([]);
   const [expanded, setExpanded] = React.useState(false);
 
   const {setRows,problems} = useContext(CppContext)
+  const {themeToggler} = useContext(AppContext)
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -56,11 +61,18 @@ export default function SimpleAccordion() {
 
   return (
     <div>
-      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className='Accordion_container'>
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} className='Accordion_container' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={ <IconButton style={{
+            color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+          }}><ExpandMoreIcon /></IconButton> }
           aria-controls="panel1bh-content"
           id="panel1bh-header"
+          
         >
          <Typography> <img src={filter} alt="" srcset="" className='filter_icon'/> </Typography>
         </AccordionSummary>

@@ -16,6 +16,7 @@ import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { Theme } from '../Theme';
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -31,7 +32,7 @@ const DashBoard = () => {
     var myDiv = document.getElementsByClassName('Actual_body')[0];
     myDiv.scrollTop = 0;
   }, []);
-    const { rootUser, setRootUser } = useContext(AppContext)
+    const { rootUser, setRootUser,themeToggler  } = useContext(AppContext)
 
     const card_data = [
         {
@@ -78,7 +79,11 @@ const DashBoard = () => {
         <Grid container spacing={{ xs: 4, md: 8 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {Array.from(Array(card_data.length)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
-                <Item className='card_container'>
+                <Item className='card_container' style={{
+                    backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+                    boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+                    
+                }}>
                     <Card data={card_data[index]}/>
                 </Item>
             </Grid>
