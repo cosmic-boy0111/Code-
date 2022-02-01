@@ -39,6 +39,11 @@
     padding: .5rem 1rem;
 }
 
+.theme_button_container{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width : 900px) {
     .search{
         width: 90%;

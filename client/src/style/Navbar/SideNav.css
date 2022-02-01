@@ -2,15 +2,16 @@
 .side_nav{
     display: inline-flex;
     height: 100vh;
-    background-color: white;
+    /* background-color: white; */
     /* background-color: black; */
-    padding: .2rem .7rem;
+    padding: .2rem .8rem;
     flex-direction: column;
     /* border: 1px solid red; */
     padding: 0 1rem;
     position: fixed;
     left: 0;
-    box-shadow: rgba(0, 0, 0, 0.233) 0px 5px 15px;
+    /* overflow-y: scroll; */
+    z-index: 11;
     /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
     
 }
@@ -34,7 +35,8 @@
 }
 
 .Open_side_drawer{
-    display: none !important;
+    visibility: hidden !important;
+    color: rgb(36, 153, 239);
 }
 
 .link2{
@@ -51,7 +53,7 @@
 
 @media screen and (max-width : 900px){
     .Open_side_drawer{
-        display: block !important;
+        visibility: visible !important;
     }
 
     .side_nav{

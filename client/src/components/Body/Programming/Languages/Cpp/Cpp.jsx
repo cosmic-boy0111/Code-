@@ -21,9 +21,10 @@ const Cpp = () => {
 
   useEffect(() => {
    
-    var myDiv = document.getElementsByClassName('Actual_body')[0];
+    var myDiv = document.getElementsByTagName("body")[0];
     myDiv.scrollTop = 0;
-
+    window.scrollTo(0, 0);
+    
   }, []);
 
 
