@@ -36,7 +36,8 @@ export default function TemporaryDrawer() {
                         <input type="text" class="form-control" id="title" style={{
                           backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
                           color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                          border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
                         }}/>
                       </div>
                       <div class="mb-3">
@@ -44,7 +45,8 @@ export default function TemporaryDrawer() {
                         <textarea class="form-control" placeholder="Add description ...." id="description" rows={6} style={{
                           backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
                           color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                          border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
                         }}></textarea>
                       </div>
                     </form>

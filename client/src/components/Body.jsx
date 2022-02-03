@@ -19,7 +19,7 @@ import { Theme } from './Theme';
 
 const Body = () => {
 
-  const {rootUser, setRootUser,themeToggler} = useContext(AppContext);
+  const {setRootUser,themeToggler} = useContext(AppContext);
 
   
   useEffect(() => {
@@ -49,6 +49,7 @@ const Body = () => {
   useEffect(() => {
     getData();
   },[]);
+
   return(
     <>
       {/* <div className='App'>

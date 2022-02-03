@@ -5,9 +5,10 @@
         fadeColor : 'rgba(0, 0, 0, 0.87)',
         BodyBackgroundColor : 'rgb(243, 244, 249)',
         boxColor : 'white',
+        // BoxShadow : 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
         BoxShadow : 'none',
-        Border : '1px solid rgb(229, 234, 242)',
         FadeBackground : '#f0f2f5',
+        Border: '1px solid rgb(229, 234, 242)'
     },
     Dark : {
         Color : 'white',

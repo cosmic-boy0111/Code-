@@ -97,13 +97,13 @@ body {
 .Actual_body{
   margin-top: 5rem;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 2rem;
   padding-bottom: 1rem;
 }
 
 
 .form-control{
-  border: none !important;
+  /* border: none !important; */
 }
 
 .form-control:focus {
@@ -133,5 +133,9 @@ body {
 @media screen and (max-width : 900px){
   .Body_container{
     margin-left: 0;
+  }
+
+  .Actual_body{
+    padding: 0 1rem;
   }
 }

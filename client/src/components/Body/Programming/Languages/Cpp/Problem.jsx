@@ -104,7 +104,8 @@ const col = ['#00e676','#eeff41','#ff6e40']
                       }}>
                             <h6>Example {counter++}</h6>
                             <div className='input_output' style={{
-                              backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor
+                              backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+                              border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
                             }}>
                                 <div>Input : {e.input}</div>
                                 <div>Output : {e.output}</div>

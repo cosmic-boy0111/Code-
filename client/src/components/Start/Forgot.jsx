@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import security from '../../images/assets/undraw_forgot_password_re_hxwm.svg'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -32,6 +32,26 @@ const Forgot = () => {
     const [cPassword, setCPassword] = useState('')
     const [done, setDone] = useState(false)
     const [passErr, setPassErr] = useState('')
+
+    const getData = async() =>{
+        try {
+          const res2 = await fetch('/about',{
+              method:'GET',
+              headers:{
+                  "Content-Type":"application/json"
+              }
+          })
+    
+              const Data = await res2.json();
+              navigate('/')
+          } catch (error) {
+              console.log('data not found');
+          }
+      }
+    
+      useEffect(() => {
+        getData();
+      },[]);
 
 
     const verify = async (e) =>{

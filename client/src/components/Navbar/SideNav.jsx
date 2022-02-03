@@ -20,7 +20,7 @@ const SideNav = () => {
     return (
         <div className='side_nav' style={{
             backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
-            boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+            boxShadow : Theme.Dark.BoxShadow 
         }}>
             <SideLink icon={home} link={'/'} />
             <SideLink icon={user} link={'/profile'} />

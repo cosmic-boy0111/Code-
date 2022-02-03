@@ -285,7 +285,8 @@ export default function TemporaryDrawer() {
                     style={{
                           backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
                           color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                          border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
                         }}
                   />
                 </div>
@@ -311,20 +312,6 @@ export default function TemporaryDrawer() {
                       Required
                     </span>
                   </label>
-                  {/* <textarea
-                    class="form-control"
-                    placeholder="Add description ...."
-                    id="description"
-                    rows={5}
-                    name="description"
-                    value={problem.description}
-                    onChange={handleChange}
-                    style={{
-                          backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
-                          color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-                          boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
-                        }}
-                  ></textarea> */}
                   <TextareaAutosize
                     aria-label="minimum height"
                     minRows={4}
@@ -337,6 +324,7 @@ export default function TemporaryDrawer() {
                           backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
                           color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
                           boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                          border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
 
                         }}
                   />

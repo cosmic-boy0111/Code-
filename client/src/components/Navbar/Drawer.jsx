@@ -50,7 +50,7 @@ const {toggleDrawer2,state2,themeToggler} = useContext(AppContext);
                 <NavLink className='link2' to={'/'} style={{
                   color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
                 }} > <img src={home} alt="" className='link_icon'/> Home  </NavLink>
-                <NavLink className='link2' to={'/user'}  style={{
+                <NavLink className='link2' to={'/profile'}  style={{
                   color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
                 }}> <img src={user} alt="" className='link_icon'/> Profile  </NavLink>
                 <NavLink className='link2' to={'/blog'}  style={{

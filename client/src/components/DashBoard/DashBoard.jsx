@@ -76,13 +76,13 @@ const DashBoard = () => {
       <>
         <h1>Welcome {rootUser.name}</h1>
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 4, md: 8 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 4, md: 8 }} columns={{ xs: 4, sm: 8, md:12 }}>
             {Array.from(Array(card_data.length)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
                 <Item className='card_container' style={{
                     backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
-                    boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
-                    
+                    boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                    border : themeToggler ? Theme.Dark.Border : Theme.Light.Border
                 }}>
                     <Card data={card_data[index]}/>
                 </Item>

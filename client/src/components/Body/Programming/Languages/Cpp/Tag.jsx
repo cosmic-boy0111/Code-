@@ -57,7 +57,8 @@ export default function MultipleSelectCheckmarks({tags, value , setValue , multi
           style={{
             backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
             color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-            boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+            boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+            border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
           }}
         >
           {tags.map((name) => (

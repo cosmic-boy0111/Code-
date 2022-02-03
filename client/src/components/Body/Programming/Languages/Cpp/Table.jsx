@@ -345,6 +345,7 @@ export default function EnhancedTable() {
     <div style={{
       display: rows.length === 0 ? 'flex' : 'none',
       backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+      border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
     }}
     className='Empty'
     >
@@ -360,7 +361,8 @@ export default function EnhancedTable() {
       <Paper sx={{ width: '100%', mb: 2 }} className='table_body' style={{
         backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
         color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+        boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+        border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
       }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>

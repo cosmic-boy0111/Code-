@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import '../../style/Initial/Login.css'
 import register from '../../images/assets/undraw_launching_re_tomg.svg'
 import Button from '@mui/material/Button';
@@ -25,6 +25,26 @@ const Register = () => {
     cPassword : '',
     key : ''
   })
+
+  const getData = async() =>{
+    try {
+      const res2 = await fetch('/about',{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/json"
+          }
+      })
+
+          const Data = await res2.json();
+          navigate('/')
+      } catch (error) {
+          console.log('data not found');
+      }
+  }
+
+  useEffect(() => {
+    getData();
+  },[]);
   
  
   const handleSubmit =  async(e) =>{

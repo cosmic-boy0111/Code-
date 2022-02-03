@@ -71,7 +71,8 @@ export default function RecipeReviewCard() {
     <Card sx={{ maxWidth: 345 }} style={{
       backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
       color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-      boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+      boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+      border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
     }}>
       <CardHeader
         avatar={

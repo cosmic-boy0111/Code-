@@ -1,4 +1,4 @@
-import React, { useState , useContext } from 'react';
+import React, { useState , useContext , useEffect } from 'react';
 import '../../style/Initial/Login.css'
 import login from '../../images/assets/undraw_maker_launch_re_rq81.svg'
 import Button from '@mui/material/Button';
@@ -19,6 +19,27 @@ const Login = () => {
     email : '',
     password : ''
   })
+
+
+  const getData = async() =>{
+    try {
+      const res2 = await fetch('/about',{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/json"
+          }
+      })
+
+          const Data = await res2.json();
+          navigate('/')
+      } catch (error) {
+          console.log('data not found');
+      }
+  }
+
+  useEffect(() => {
+    getData();
+  },[]);
 
   const handleSubmit = async (e) =>{
     e.preventDefault();

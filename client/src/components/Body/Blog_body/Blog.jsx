@@ -25,7 +25,8 @@ const Blog = () => {
             <div className='blog_search' style={{
                  backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
                  color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-                 boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow
+                 boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                 border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
             }}>
                 <img src={search} alt="" srcset="" className='search_icon'/>
                 <input type="text" name="" id="" className='search_bar' placeholder='Search blog...' style={{

@@ -8,10 +8,11 @@ const Card = ({data}) => {
 
   return <>
     <div className='card_body'>
-      <NavLink to={data.link} className='link'>
+      <NavLink to={data.link} className='pro_link'>
         <img src={data.icon} alt="" srcset="" />
         <div style={{
           color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+
         }} >{data.title}</div>
       </NavLink>
     </div>

@@ -1,0 +1,105 @@
+
+
+.Header_main_body{
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    padding-bottom: .5rem;
+}
+
+.Header_main_bottom{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.logo_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 1rem;
+    padding: .3rem;
+}
+
+.name_role_info{
+    position: relative;
+    bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.min{
+    text-transform: capitalize !important;
+    opacity: .7;
+}
+
+.logo_holder{
+    display: flex;
+    align-items: center;
+}
+
+.info_holder{
+    margin: 1.5rem 0;
+}
+
+.follow_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 2rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(163, 162, 162, 0.705);
+}
+
+.follow{
+    display: flex;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.follow_icon{
+    padding: .5rem;
+    border-radius: 4px;
+    color: white;
+}
+
+.follow_count{
+    margin-left: .5rem;
+    text-align: initial;
+}
+
+.follow_count h6{
+    margin: 0;
+}
+
+.About{
+    text-align: initial;
+    padding: 1rem;
+}
+
+.info_holder2{
+    padding: .5rem;
+    margin-bottom: .2rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.css-cnd76u-MuiPaper-root{
+    padding: 0 !important;
+}
+
+.css-heg063-MuiTabs-flexContainer{
+    flex-wrap: wrap;
+}
+
+.css-1aquho2-MuiTabs-indicator{
+    height: 2px;
+}
+
+@media screen and (max-width : 900px){
+    .css-1aquho2-MuiTabs-indicator{
+        height: 0 !important;
+    }
+}
