@@ -95,7 +95,7 @@ const Programming = () => {
           <img src={logo} alt="" srcset="" className='logo'/> <h2>PROGRAMMING</h2>
         </header>
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 4, md: 8 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 8, sm: 8, md: 16 }}>
             {Array.from(Array(languages.length)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
                 <Item className='card_container' style={{

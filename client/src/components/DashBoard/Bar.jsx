@@ -1,14 +1,15 @@
 import { height } from '@mui/system'
 import React,{useContext,useEffect,useState} from 'react'
-import {Bar, PolarArea} from 'react-chartjs-2'
-import { AppContext } from '../../../App'
-import { Theme } from '../../Theme'
+import {Bar, PolarArea,Line} from 'react-chartjs-2'
+import { AppContext } from '../../App'
+import { Theme } from '../Theme'
 
 
-const Chart = ({bgColor,labels,data,label}) => {
+const Chart = () => {
 
     const {themeToggler} = useContext(AppContext)
 
+    
     const [axis, setAxis] = useState('x');
 
 
@@ -20,6 +21,7 @@ const Chart = ({bgColor,labels,data,label}) => {
           setAxis('x')
       }
     }, []);
+    
     
     
 
@@ -36,6 +38,7 @@ const Chart = ({bgColor,labels,data,label}) => {
         },
         maintainAspectRatio: false,
         indexAxis: axis,
+
         scales: {
             x: {
                 grid: {
@@ -61,10 +64,10 @@ const Chart = ({bgColor,labels,data,label}) => {
 
     return (
         <div style={{
-            marginBottom : '2rem',
+            marginTop : '2rem',
             padding:'8px',
-            height:'400px',
             borderRadius:'4px',
+            height:'400px',
             backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
             color: themeToggler ? Theme.Dark.Color : Theme.Light.Color,
             border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
@@ -72,12 +75,12 @@ const Chart = ({bgColor,labels,data,label}) => {
             <Bar
                 options={options}
                 data={{
-                    labels: labels,
+                    labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
                     datasets: [{
                         axis : axis,
-                        label: label,
-                        data: data,
-                        backgroundColor: bgColor,
+                        label: 'Active Contribution',
+                        data: [10,5,30,10,20,4,9,11,15,4,1,8],
+                        backgroundColor: 'rgba(36, 153, 239, 0.85)',
                         fill: true,
                         tension: 0.4,
                         borderRadius : 10
