@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext} from 'react';
 import '../../../style/Body/Programming.css'
 import code from '../../../images/assets/newCode.jpg'
 import Card from './Card'
@@ -19,6 +19,11 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { CardMedia } from '@mui/material';
 
+
+
+import { AppContext } from '../../../App';
+import { Theme } from '../../Theme';
+
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
     padding: theme.spacing(2),
@@ -33,11 +38,12 @@ const Programming = () => {
 
 
   useEffect(() => {
-    var myDiv = document.getElementsByClassName('Actual_body')[0];
+    var myDiv = document.getElementsByClassName('Body_container')[0];
     myDiv.scrollTop = 0;
+    window.scrollTo(0, 0);
   }, []);
   
-
+  const {themeToggler  } = useContext(AppContext)
 
   const languages = [
     {
@@ -76,26 +82,27 @@ const Programming = () => {
   return (
     <>
       <div className='code_container'>
-        {/* <div className='code_img'>
-          <img src={code} alt="" className='header_img'/>
-        </div> */}
         <CardMedia
         component="img"
-        height="195"
+        height="200"
         image={code}
         alt="Paella dish"
         style={{
-          borderRadius:'4px'
+          // borderRadius:'0px 0 4px 4px'
         }}
       />
         <header className='tech_header'>
           <img src={logo} alt="" srcset="" className='logo'/> <h2>PROGRAMMING</h2>
         </header>
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 4, md: 8 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 8, sm: 8, md: 16 }}>
             {Array.from(Array(languages.length)).map((_, index) => (
             <Grid item xs={4} sm={4} md={4} key={index}>
-                <Item className='card_container'>
+                <Item className='card_container' style={{
+                    backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+                    boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+                    border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
+                }}>
                   <Card data={languages[index]} />
                 </Item>
             </Grid>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useContext} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -7,8 +7,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton } from '@mui/material';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
+import { AppContext } from '../../../../../App';
+import { Theme } from '../../../../Theme';
 
 export default function ScrollDialog({open,setOpen,problem}) {
+
+  const {themeToggler} = useContext(AppContext)
+
 
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
@@ -53,6 +58,15 @@ const col = ['#00e676','#eeff41','#ff6e40']
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
+      <div 
+        style={{
+                backgroundColor: themeToggler
+                  ? Theme.Dark.BodyBackgroundColor
+                  : Theme.Light.BodyBackgroundColor,
+                color: themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+              }}>
+
+      
         <DialogTitle id="scroll-dialog-title">
             <div className='problem_header'>
                 <div>
@@ -69,6 +83,10 @@ const col = ['#00e676','#eeff41','#ff6e40']
             ref={descriptionElementRef}
             tabIndex={-1}
             className='problem_body'
+            style={{
+                color: themeToggler ? Theme.Dark.fadeColor : 'none',
+            }}
+
           >
               <h4>{problem.title}</h4>
               <p> {getString()} </p>
@@ -81,9 +99,14 @@ const col = ['#00e676','#eeff41','#ff6e40']
                       if(e.input === '' || e.output === ''){
                           return ``;
                       }
-                      return <div className='test_case_holder'>
+                      return <div className='test_case_holder' style={{
+                        color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+                      }}>
                             <h6>Example {counter++}</h6>
-                            <div className='input_output'>
+                            <div className='input_output' style={{
+                              backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+                              border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
+                            }}>
                                 <div>Input : {e.input}</div>
                                 <div>Output : {e.output}</div>
                             </div>
@@ -95,6 +118,7 @@ const col = ['#00e676','#eeff41','#ff6e40']
         <DialogActions>
           <Button onClick={()=>setOpen(false)}>Cancel</Button>
         </DialogActions>
+        </div>
       </Dialog>
     </div>
   );

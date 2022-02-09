@@ -1,18 +1,45 @@
-import React, { useState , useContext } from 'react';
+import React, { useState , useContext , useEffect } from 'react';
 import '../../style/Initial/Login.css'
 import login from '../../images/assets/undraw_maker_launch_re_rq81.svg'
 import Button from '@mui/material/Button';
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , NavLink } from 'react-router-dom'
+import ThemButton from '../ThemeChnageButton'
+import { AppContext } from '../../App';
+import { Theme } from '../Theme';
+import logo from '../../images/AppLogo.png'
 
-const Login = ({setPage}) => {
+const Login = () => {
 
   const navigate = useNavigate();
+
+  const {themeToggler} = useContext(AppContext)
 
   const [userData,setUserData] = useState({
     email : '',
     password : ''
   })
+
+
+  const getData = async() =>{
+    try {
+      const res2 = await fetch('/about',{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/json"
+          }
+      })
+
+          const Data = await res2.json();
+          navigate('/')
+      } catch (error) {
+          console.log('data not found');
+      }
+  }
+
+  useEffect(() => {
+    getData();
+  },[]);
 
   const handleSubmit = async (e) =>{
     e.preventDefault();
@@ -54,27 +81,42 @@ const Login = ({setPage}) => {
   }
 
   return <>
-    <div className='login_page'>
-      <h2 className='heading'> LOGIN </h2>
-      <div className='login_body'>
-        <div className='login_image_div'>
-          <img src={login} alt="" />
+    <div className='login_page' style={{
+      backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor,
+      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+    }}>
+      <div className='Theme_button'>
+        <ThemButton />
+      </div>
+      <div className='login_body' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        boxShadow : Theme.Dark.BoxShadow
+      }}>
+        <div className='Header_container'>
+            <img src={logo} alt="" srcset="" />
+            <h2>Sign In</h2>
         </div>
         <div className='login_form'>
           <form onSubmit={handleSubmit}>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name='email' value={userData.email} onChange={inputHandler} required/>
+              <input type="email" class="form-control bg-tp" id="email" name='email' value={userData.email} onChange={inputHandler} required style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name='password' value={userData.password} onChange={inputHandler} required/>
+              <input type="password" class="form-control bg-tp" id="password" name='password' value={userData.password} onChange={inputHandler} required style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
             </div>
             <Button type='submit' variant="contained" style={{width:'100%'}}>LOGIN</Button>
-            <Button color='primary' style={{width:'100%',marginTop:'1rem'}} onClick={()=>setPage('forgot')}>Forgot Password ?</Button>
+            <NavLink to='/forgot' className='initial_link' > <Button color='primary' style={{width:'100%',marginTop:'1rem'}} >Forgot Password ?</Button> </NavLink>
           </form>
-          <footer>
-          <Button variant="outlined" style={{width:'100%'}} onClick={()=>setPage('register')}>Create Account</Button>
+          <footer className='Log_footer'>
+          <NavLink to='/register' className='initial_link'> <Button variant="outlined" style={{width:'100%'}} >Create Account</Button> </NavLink>
           </footer>
         </div>
       </div>

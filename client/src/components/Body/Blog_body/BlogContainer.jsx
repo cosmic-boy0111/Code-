@@ -22,7 +22,7 @@
 
 
 
-import * as React from 'react';
+import React,{useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -40,6 +40,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import img from "../../../images/assets/code.jpg"
 
+import { AppContext } from '../../../App'
+import { Theme } from '../../Theme';
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -54,12 +57,23 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false);
 
+  const {themeToggler} = useContext(AppContext)
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const col = () =>{
+    return themeToggler ? Theme.Dark.Color : Theme.Light.Color
+  }
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} style={{
+      backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+      boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
+      border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
+    }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -72,7 +86,7 @@ export default function RecipeReviewCard() {
           </IconButton>
         }
         title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        
       />
       <CardMedia
         component="img"
@@ -81,7 +95,7 @@ export default function RecipeReviewCard() {
         alt="Paella dish"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color={col}>
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen peas along with the mussels,
           if you like.

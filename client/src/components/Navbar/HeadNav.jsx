@@ -6,6 +6,8 @@ import { AppContext } from '../../App';
 import menu from '../../images/icon/menu.png'
 import { IconButton } from '@mui/material';
 import AppLogo from '../../images/AppLogo.png'
+import MenuIcon from '@mui/icons-material/Menu';
+import ThemeButton from '../ThemeChnageButton'
 
 const HeadNav = () => {
 
@@ -21,7 +23,10 @@ const HeadNav = () => {
                 <img src={search} alt="" srcset="" className='search_icon'/>
                 <input type="text" name="" id="" className='search_bar' placeholder='Search here...'/>
             </div> */}
-            <span onClick={toggleDrawer2('left', true)} className='Open_side_drawer'><img src={menu} alt="" className='link_icon'/></span>
+            <div className='theme_button_container'>
+            <ThemeButton />
+            <span onClick={toggleDrawer2('left', true)} className='Open_side_drawer'><MenuIcon /></span>
+            </div>
         </nav>
     )
 }

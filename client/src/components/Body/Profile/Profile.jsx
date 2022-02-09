@@ -1,15 +1,42 @@
-import React from 'react';
-import SideNav from '../../Navbar/SideNav';
-import HeadNav from '../../Navbar/HeadNav';
+import React,{useEffect,useContext} from 'react';
+import '../../../style/Body/Profile.css'
+import UserHeader from './UserHeader';
+import ProfileHolder from './ProfileHolder';
+import { AppContext } from '../../../App';
 
 const Profile = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const {setRootUser,rootUser} = useContext(AppContext)
+
+  const getData = async() =>{
+    try {
+      const res2 = await fetch('/about',{
+          method:'GET',
+          headers:{
+              "Content-Type":"application/json"
+          }
+      })
+
+          const Data = await res2.json();
+          setRootUser(Data)
+      } catch (error) {
+          console.log('data not found');
+      }
+  }
+
+  useEffect(() => {
+    getData();
+  },[]);
+
   return (
     <>
-      {/* <iframe src="https://outlook.live.com/calendar/0/published/00000000-0000-0000-0000-000000000000/5d672b43-b2c9-45d4-b5c1-13cfd0e0690d/cid-938AFABC2ACB16CD/calendar.html" frameborder="0" style={{
-        width:'100%',
-        height:'100%'
-      }}></iframe> */}
-      profile
+        <UserHeader />
+        <ProfileHolder />
+        
     </>
   )
 };

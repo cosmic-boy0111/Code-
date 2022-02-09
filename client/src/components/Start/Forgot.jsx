@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import security from '../../images/assets/undraw_forgot_password_re_hxwm.svg'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -7,44 +7,21 @@ import CircularProgress, {
 } from '@mui/material/CircularProgress';
 import bcrypt from 'bcryptjs'
 import { toast } from 'react-toastify'
+import {
+    useNavigate,
+    NavLink
+} from 'react-router-dom'
+import ThemButton from '../ThemeChnageButton'
+import { AppContext } from '../../App';
+import { Theme } from '../Theme';
+import logo from '../../images/AppLogo.png'
 
 
-// Inspired by the former Facebook spinners.
-function FacebookCircularProgress(props) {
-  return (
-    <Box sx={{ position: 'relative' }}>
-      <CircularProgress
-        variant="determinate"
-        sx={{
-          color: (theme) =>
-            theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-        }}
-        size={40}
-        thickness={4}
-        {...props}
-        value={100}
-      />
-      <CircularProgress
-        variant="indeterminate"
-        disableShrink
-        sx={{
-          color: (theme) => (theme.palette.mode === 'light' ? '#1a90ff' : '#308fe8'),
-          animationDuration: '550ms',
-          position: 'absolute',
-          left: 0,
-          [`& .${circularProgressClasses.circle}`]: {
-            strokeLinecap: 'round',
-          },
-        }}
-        size={40}
-        thickness={4}
-        {...props}
-      />
-    </Box>
-  );
-}
-const Forgot = ({setPage}) => {
+const Forgot = () => {
 
+    const navigate = useNavigate();
+
+    const {themeToggler} = useContext(AppContext)
 
     const [key, setKey] = useState('');
     const [email, setEmail] = useState('');
@@ -55,6 +32,26 @@ const Forgot = ({setPage}) => {
     const [cPassword, setCPassword] = useState('')
     const [done, setDone] = useState(false)
     const [passErr, setPassErr] = useState('')
+
+    const getData = async() =>{
+        try {
+          const res2 = await fetch('/about',{
+              method:'GET',
+              headers:{
+                  "Content-Type":"application/json"
+              }
+          })
+    
+              const Data = await res2.json();
+              navigate('/')
+          } catch (error) {
+              console.log('data not found');
+          }
+      }
+    
+      useEffect(() => {
+        getData();
+      },[]);
 
 
     const verify = async (e) =>{
@@ -147,8 +144,8 @@ const Forgot = ({setPage}) => {
             setDone(true);
             setPassErr('')
             console.log('update');
-            setPage('login')
             toast.success('Password Update')
+            navigate('/login')
         } catch (error) {
             toast.error('Update Failed')
             console.log(error);
@@ -158,24 +155,39 @@ const Forgot = ({setPage}) => {
     return (
         <>
         
-        <div className='login_page'>
-            <h2 className='heading'> FORGOT PASSWORD </h2>
-            <div className='login_body'>
-                
-                <div className='login_image_div'>
-                    <img src={security} alt="" />
-                </div>
+        <div className='login_page' style={{
+      backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor,
+      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+    }}>
+            <div className='Theme_button'>
+                <ThemButton />
+            </div>
+            <div className='login_body' style={{
+        backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+        boxShadow : Theme.Dark.BoxShadow
+      }}>
+      <div className='Header_container'>
+            <img src={logo} alt="" srcset="" />
+            <h2>Reset your password</h2>
+        </div>
+
                 <div className='login_form'>
                 <form onSubmit={ isVerify ? submitData : verify}>
                    
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email"  name='email' value = {email} onChange={(e)=>setEmail(e.target.value)} required/>
+                        <input type="email" class="form-control bg-tp" id="email"  name='email' value = {email} onChange={(e)=>setEmail(e.target.value)} required style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
                     </div>
                     
                     <div class="mb-3">
                         <label for="key" class="form-label">Security Key</label>
-                        <input type="text" class="form-control" id="key"  name='key' value = {key} onChange={(e)=>setKey(e.target.value)} required/>
+                        <input type="text" class="form-control bg-tp" id="key"  name='key' value = {key} onChange={(e)=>setKey(e.target.value)} required style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
                     </div>
                     <div style={{
                         display:err?'block':'none'
@@ -193,12 +205,18 @@ const Forgot = ({setPage}) => {
                        
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control bg-grey" id="password"  name='password' value={password} onChange={(e)=> setPassword(e.target.value)} />
+                            <input type="password" class="form-control bg-tp " id="password"  name='password' value={password} onChange={(e)=> setPassword(e.target.value)} style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
                         </div>
                         
                         <div class="mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control bg-grey" id="confirmPassword"  name='confirmPassword' value={cPassword} onChange={(e)=> setCPassword(e.target.value)} />
+                            <input type="password" class="form-control bg-tp " id="confirmPassword"  name='confirmPassword' value={cPassword} onChange={(e)=> setCPassword(e.target.value)} style={{
+                color : themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+                backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor
+              }}/>
                         </div>
                     </div>
                     <div style={{
@@ -218,8 +236,8 @@ const Forgot = ({setPage}) => {
                     
                     
                 </form>
-                <footer>
-                    <Button variant="outlined" style={{width:'100%'}} onClick={()=>setPage('login')}>Login</Button>
+                <footer className='Log_footer'>
+                    <NavLink to='/login' className='initial_link' > <Button variant="outlined" style={{width:'100%'}} >Login</Button> </NavLink>
                 </footer>
                 </div>
             </div>

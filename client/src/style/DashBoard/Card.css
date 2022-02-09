@@ -1,10 +1,10 @@
 .card_container{
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
 }
 
 .card_body{
     /* border: 1px solid red; */
-    padding: 1rem 0;
+    padding: .2rem 0;
     display: flex;
     width: 100%;
     justify-content: center;

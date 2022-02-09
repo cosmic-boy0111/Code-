@@ -5,12 +5,14 @@
     width: 20%;
     padding: 0 1rem;
     border-radius: 20px;
-    position: absolute;
+    position: sticky;
+    left: 0;
+    top: 5rem;
 }
 
 .blog_body{
     /* border: 1px solid red; */
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,8 +60,10 @@
 }
 
 .create_post{
-    position: absolute;
+    position: fixed;
     bottom: 1.5rem;
+    display: inline;
+    justify-content: flex-end;
     right: 1.5rem;
 }
 
@@ -91,7 +95,8 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+
 }
 
 .create_blog_body{
@@ -126,7 +131,7 @@
 .css-1ri6ub7-MuiPaper-root-MuiCard-root{
     min-width: 500px !important;
     margin: 1rem;
-    box-shadow: none !important;
+    /* box-shadow: none !important; */
 }
 
 @media screen and (max-width : 900px) {
