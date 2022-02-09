@@ -96,7 +96,7 @@ const Register = () => {
   return <>
     <div className='login_page' style={{
       backgroundColor : themeToggler ? Theme.Dark.BodyBackgroundColor : Theme.Light.BodyBackgroundColor,
-      color : themeToggler ? Theme.Dark.Color : Theme.Light.Color
+      color : themeToggler? Theme.Dark.Color : Theme.Light.Color
     }}>
       <div className='Theme_button'>
         <ThemButton />
