@@ -40,6 +40,7 @@ const Body = () => {
 
           const Data = await res2.json();
           setRootUser(Data)
+          console.log(Data);
       } catch (error) {
           console.log('data not found');
           navigate('/login')

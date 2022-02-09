@@ -12,6 +12,7 @@ import appDev from '../../images/icon/developer.png'
 import home from '../../images/icon/homepage.png'
 import { Theme } from '../Theme';
 import { AppContext } from '../../App';
+import { Tooltip } from '@mui/material';
 
 const SideNav = () => {
 
@@ -22,7 +23,7 @@ const SideNav = () => {
             backgroundColor : themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
             boxShadow : Theme.Dark.BoxShadow 
         }}>
-            <SideLink icon={home} link={'/'} />
+             <SideLink icon={home} link={'/'} /> 
             <SideLink icon={user} link={'/profile'} />
             <SideLink icon={blog} link={'/blog'} />
             <SideLink icon={users} link={'/'} />

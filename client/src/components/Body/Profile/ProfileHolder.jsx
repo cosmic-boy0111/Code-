@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import About from './About';
 import Bar from './Bar'
+import Polar from './Polar'
 import { style } from '@mui/system';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -42,19 +43,14 @@ const ProfileHolder = () => {
                   bgColor = {'rgba(36, 153, 239, 0.85)'} 
                   labels={['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
                   data = {[10,5,30,10,20,4,9,11,15,4,1,8]}
-                  label = {'BLOGS'}
+                  label = {'Monthly Contribution'}
                 />
               </Item>
               <Item className='card_container' style={{
                   backgroundColor : 'transparent',
                   boxShadow : themeToggler ? Theme.Dark.BoxShadow : Theme.Light.BoxShadow,
               }}>
-                <Bar 
-                  bgColor = {'#ec407a'} 
-                  labels={['C','C++','Java','Python','JS','C Sharp']}
-                  data = {[8,10,5,7,9,7,4]}
-                  label = {'PROBLEMS'}
-                />
+                <Polar />
               </Item>
             </Grid>
           </Grid>

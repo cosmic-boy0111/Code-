@@ -46,6 +46,7 @@ const Chart = () => {
                     borderColor : 'transparent'
                 },
                 ticks: {
+                    display: axis === 'x',
                     color : 'rgb(148, 164, 196)'
                 },
             },
@@ -55,6 +56,7 @@ const Chart = () => {
                     borderColor : 'transparent'
                 },
                 ticks: {
+                    display: axis === 'y',
                     color : 'rgb(148, 164, 196)'
                 },
             }
@@ -64,13 +66,13 @@ const Chart = () => {
 
     return (
         <div style={{
-            marginTop : '2rem',
+            // marginTop : '2rem',
             padding:'8px',
             borderRadius:'4px',
             height:'400px',
-            backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
-            color: themeToggler ? Theme.Dark.Color : Theme.Light.Color,
-            border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
+            // backgroundColor: themeToggler ? Theme.Dark.boxColor : Theme.Light.boxColor,
+            // color: themeToggler ? Theme.Dark.Color : Theme.Light.Color,
+            // border: themeToggler ? Theme.Dark.Border : Theme.Light.Border
         }}>
             <Bar
                 options={options}
